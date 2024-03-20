@@ -30,23 +30,23 @@ restar();
 
 //ejemplo 2
 
-function datosUsuarios(nombre, edad, dni, direccion = '') {
-	console.log(nombre, edad, dni, direccion);
+// function datosUsuarios(nombre, edad, dni, direccion = '') {
+// 	console.log(nombre, edad, dni, direccion);
 
-	if (edad > 18) {
-		console.log(`${nombre} es mayor de edad`);
-	}
-}
+// 	if (edad > 18) {
+// 		console.log(`${nombre} es mayor de edad`);
+// 	}
+// }
 
-const nombreUsuario = prompt('Ingresa tu nombre');
+// const nombreUsuario = prompt('Ingresa tu nombre');
 
-const edadUsuario = prompt('Ingresa tu edad');
+// const edadUsuario = prompt('Ingresa tu edad');
 
-const dniUsuario = prompt('Ingresa tu dni');
+// const dniUsuario = prompt('Ingresa tu dni');
 
-const direccionUsuario = prompt('Ingresa tu direccion');
+// const direccionUsuario = prompt('Ingresa tu direccion');
 
-datosUsuarios(nombreUsuario, edadUsuario, dniUsuario, direccionUsuario);
+// datosUsuarios(nombreUsuario, edadUsuario, dniUsuario, direccionUsuario);
 
 //EJERCICIOS PARA PRACTICAR
 
@@ -58,3 +58,29 @@ datosUsuarios(nombreUsuario, edadUsuario, dniUsuario, direccionUsuario);
 
 //TAREA 3:
 //PEDIRLE AL USUARIO QUE INGRESE SU NOMBRE, CONTRASEÑA, CONFIRMAR CONTRASEÑA Y EN LA FUNCION VALIDAR ESOS DATOS, VALIDAR QUE LOS CAMPOS NO ESTEN VACIO EN CASO DE UNO ESTAR VACIO MOSTRARLE EN CONSOLA QUE TODOS LOS CAMPOS SON OBLIGATORIOS, VALIDAR QUE LA CONTRASEÑA SEA MAYOR A 5 CARACTERES Y VALIDAR QUE LA CONTRASEÑA Y CONFIRMAR CONTRASEÑA SEAN IGUALES EN CASO CONTRARIO MOSTRARLE AL USUARIO EL ERROR
+
+const nombreRegistro = prompt('Ingrese su nombre');
+
+const passwordRegistro = prompt('Ingrese su contraseña');
+
+const confirmarPasswordRegistro = prompt('Ingrese nuevamente su contraseña');
+
+const usuariosRegistrados = ['juanito', 'martina', 'pepito'];
+
+function validarRegistro(nombre, password, confirmPassword) {
+	if (nombre == '' || password == '' || confirmPassword == '') {
+		console.log('Todos los campos son obligatorios');
+		return;
+	} else if (password.length < 5) {
+		console.log('La contraseña debe ser mayor a 5');
+		return;
+	} else if (password !== confirmPassword) {
+		console.log('Las contraseñas deben ser iguales');
+		return;
+	}
+
+	console.log('usuario registrado');
+	usuariosRegistrados.push(nombre);
+}
+
+validarRegistro(nombreRegistro, passwordRegistro, confirmarPasswordRegistro);
