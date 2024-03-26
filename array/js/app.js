@@ -1,5 +1,5 @@
 // //un Array es una lista Ordenada, Los array aceptan cualquier tipo de dato string,number,boolean,otros array y otros mas
-// const num = [1, 2, 3, 4, 5, 6];
+const num = [1, 2, 3, 4, 5, 6];
 
 // const bool = [true, false];
 
@@ -23,7 +23,7 @@
 // //.reverse() ordena alfabeticamente de la Z-A
 // console.log(alumnos.reverse());
 
-// //.includs() busca en el arreglo el elemento que le hayamos definido en caso de encontrarlo nos devuelve TRUE si no False
+// //.includes() busca en el arreglo el elemento que le hayamos definido en caso de encontrarlo nos devuelve TRUE si no False
 // console.log(alumnos.includes('aslkdoak'));
 
 // //.pop() nos permite eliminar el ultimo elemento del arreglo
@@ -83,3 +83,13 @@ console.log(contadorPares);
 
 //ejercicio 3
 //van a tener un arreglo de numeros [1,2,3,4,5,6,7,8] y cada numero que pase tiene que sumarse van tener una variable total que sea igual a 0 y cuando pase por ejemeplo el 1 sumarlo al 0 cuando pase el 2 sumarle al total previo
+
+const numeroAcumulados = [1, 2, 3, 4, 5, 6, 7, 8];
+
+let total = 0;
+
+for (let i = 0; i < numeroAcumulados.length; i++) {
+	total = total + numeroAcumulados[i];
+}
+
+console.log(total);
