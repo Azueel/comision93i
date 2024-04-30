@@ -1,8 +1,11 @@
 const tablaUsuario = document.querySelector('#tablaUsuario');
 const tablaProducto = document.querySelector('#tablaProducto');
 const formProductos = document.querySelector('#formProductos');
+const modalEditar = document.querySelector('#modalEditar');
+const formProductosEditar = document.querySelector('#formProductosEditar');
 
 formProductos.addEventListener('submit', crearProducto);
+formProductosEditar.addEventListener('submit', editarProducto);
 
 const usuarios = JSON.parse(localStorage.getItem('registrados'));
 
@@ -102,15 +105,46 @@ function mostrarModalEditar(id) {
 		return producto.id === id;
 	});
 
-	console.log(producto);
+	//traemos los input del formularios editar y remplazamos su valor por los del producto seleccionado
+	document.querySelector('#nombreProductoEditar').value = producto.nombre;
+	document.querySelector('#precioProductoEditar').value = producto.precio;
+	document.querySelector('#descripcionProductoEditar').value = producto.descripcion;
 
-	const nombreEditar = (document.querySelector('#nombreProductoEditar').value =
-		producto.nombre);
-	const precioEditar = (document.querySelector('#precioProductoEditar').value =
-		producto.precio);
-	const descripcionEditar = (document.querySelector(
+	//CREAMOS UN ATRIBUTO en la etiqueta del modal llamado data-id y le ponemos el valor del id del producto seleccionado a editar
+	modalEditar.setAttribute('data-id', id);
+}
+
+function editarProducto(e) {
+	e.preventDefault();
+	const nombreEditar = document.querySelector('#nombreProductoEditar').value;
+	const precioEditar = document.querySelector('#precioProductoEditar').value;
+	const descripcionEditar = document.querySelector(
 		'#descripcionProductoEditar'
-	).value = producto.descripcion);
+	).value;
+
+	//validaciones
+	if (nombreEditar === '' || precioEditar === '' || descripcionEditar === '') {
+		console.log('todos los productos son obligatorios');
+	}
+
+	//si llega aca el producto esta correcto y debemos cambiar el antiguo por el nuevo editado
+	//obtener el ID del producto que estamos editando
+	const id = modalEditar.getAttribute('data-id');
+
+	const productoIndex = productos.findIndex(function (producto) {
+		return producto.id === parseInt(id);
+	});
+
+	productos[productoIndex].nombre = nombreEditar;
+	productos[productoIndex].precio = precioEditar;
+	productos[productoIndex].descripcion = descripcionEditar;
+
+	localStorage.setItem('productos', JSON.stringify(productos));
+
+	//mostrar modal de editar
+	document.querySelector('#modalEditar').style.display = 'none';
+
+	cargarTablaProductos();
 }
 
 //funcion para eliminar
