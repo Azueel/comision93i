@@ -126,5 +126,3 @@ const productosIterados = productos.map(function (producto) {
 		`El nombre del producto es ${producto.nombre} y su valor es de ${producto.precio}`
 	);
 });
-
-//hola
