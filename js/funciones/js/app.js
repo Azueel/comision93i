@@ -84,3 +84,6 @@ function validarRegistro(nombre, password, confirmPassword) {
 }
 
 validarRegistro(nombreRegistro, passwordRegistro, confirmarPasswordRegistro);
+
+const restar2 = (num) => console.log(2 - 2);
+restar();
